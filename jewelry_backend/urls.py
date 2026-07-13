@@ -5,7 +5,10 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+def home(request):
+    return JsonResponse({
+        "message": "Jewelry Backend API is running successfully!"
+    })
 urlpatterns = [
     path('', home),
     path('admin/', admin.site.urls),
@@ -13,10 +16,4 @@ urlpatterns = [
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
-def home(request):
-    return JsonResponse({
-        "message": "Jewelry Backend API is running successfully!",
-        "products": "/api/products/",
-        "categories": "/api/categories/",
-        "admin": "/admin/"
-    })
+
